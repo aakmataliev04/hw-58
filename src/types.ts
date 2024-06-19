@@ -1,0 +1,1 @@
+export type alertType = 'primary' | 'success' | 'danger' | 'warning';
