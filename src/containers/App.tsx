@@ -22,10 +22,12 @@ const App = () => {
           <p className={'ps-3'}>This is modal content</p>
         </Modal>) : null}
       {showAlert ?
-        (<><Alert type={'warning'} onDismiss={() => setShowAlert(false)}>
+        (<>
+          <Alert isShown={showAlert} type={'warning'} onDismiss={() => setShowAlert(false)}>
           This is <b>success</b> alert
         </Alert>
-          <Alert type="success">This is a success alert</Alert></>) : null}
+          <Alert isShown={showAlert} type="success">This is a success alert</Alert>
+        </>) : null}
     </div>
   );
 };

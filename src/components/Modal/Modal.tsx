@@ -1,4 +1,5 @@
 import React from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
 
 interface Props extends React.PropsWithChildren {
   show: boolean;
@@ -12,10 +13,14 @@ const Modal: React.FC<Props> = ({ show, tittle, children, onClose }) => {
         className="modal-backdrop show"
         style={{ display: show ? 'block' : 'none' }}
       />
-      <div
+      <AnimatePresence>
+      <motion.div
         className="modal show"
         style={{ display: show ? 'block' : 'none' }}
         onClick={onClose}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
       >
         <div
           className="modal-dialog"
@@ -31,7 +36,10 @@ const Modal: React.FC<Props> = ({ show, tittle, children, onClose }) => {
             {children}
           </div>
         </div>
-      </div>
+      </motion.div>
+
+        </AnimatePresence>
+
     </>
   );
 };
